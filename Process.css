@@ -45,7 +45,7 @@ body {
 
 .app {
   width: 100%;
-  max-width: 430px;
+  max-width:none;
   min-height: 100vh;
   margin: 0 auto;
   background: var(--background);
@@ -1123,7 +1123,7 @@ body {
 
   .modal {
     width: 100%;
-    max-width: 430px;
+    max-width:none;
   }
 }
 
