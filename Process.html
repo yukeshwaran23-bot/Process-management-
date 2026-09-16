@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Process Management</title>
+
+  <link rel="stylesheet" href="process.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <h1>Process Management</h1>
+
+      <button class="add-btn" id="addBtn" aria-label="Add Process">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </header>
+
+
+    <!-- TABS -->
+    <nav class="tabs" id="tabs">
+
+      <button class="tab active" data-page="given">
+        Given
+      </button>
+
+      <button class="tab" data-page="arrived">
+        Arrived
+      </button>
+
+      <button class="tab" data-page="parceled">
+        Parceled
+      </button>
+
+      <span class="tab-line"></span>
+
+    </nav>
+
+
+    <!-- SEARCH -->
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search party name..."
+        autocomplete="off">
+    </div>
+
+
+    <!-- STATUS COUNT -->
+    <div class="status-header" id="statusHeader">
+      <div class="status-left">
+        <i class="fa-solid fa-box"></i>
+        <span id="statusText">Pending : 0</span>
+      </div>
+
+      <span class="status-small" id="statusSmall">
+        Sarees to be delivered
+      </span>
+    </div>
+
+
+    <!-- CARDS -->
+    <main id="cardContainer"></main>
+
+  </div>
+
+
+  <!-- ADD / EDIT MODAL -->
+  <div class="modal-overlay" id="formModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+        <h2 id="formTitle">Add New Process</h2>
+
+        <button class="close-btn" id="closeForm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+
+      <form id="processForm">
+
+        <input type="hidden" id="editId">
+
+
+        <div class="form-group">
+          <label>Party Name</label>
+
+          <input
+            type="text"
+            id="partyName"
+            placeholder="Enter party name"
+            required>
+        </div>
+
+
+        <div class="form-group">
+          <label>Total Sarees</label>
+
+          <input
+            type="number"
+            id="totalSarees"
+            placeholder="Enter total sarees"
+            min="1"
+            required>
+        </div>
+
+
+        <div class="form-group">
+          <label>Type</label>
+
+          <select id="sareeType" required>
+            <option value="">Select type</option>
+            <option value="Half stiff">Half stiff</option>
+            <option value="Ap wash">Ap wash</option>
+            <option value="Glossy">Glossy</option>
+            <option value="Half stiff visiri">Half stiff visiri</option>
+            <option value="Glossy rough fold">Glossy rough fold</option>
+            <option value="Ap wash rough fold">Ap wash rough fold</option>
+          </select>
+        </div>
+
+
+        <!-- GIVEN DATE -->
+        <div class="form-group" id="givenDateGroup">
+          <label>Given Date</label>
+
+          <input type="date" id="givenDate">
+        </div>
+
+
+        <!-- DELIVERY DATE -->
+        <div class="form-group hidden" id="deliveryDateGroup">
+          <label>Delivery Date</label>
+
+          <input type="date" id="deliveryDate">
+        </div>
+
+
+        <!-- PARCELED DATE -->
+        <div class="form-group hidden" id="parceledDateGroup">
+          <label>Parceled Date</label>
+
+          <input type="date" id="parceledDate">
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            id="cancelForm">
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="save-btn">
+            Save
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- 3 DOT MENU -->
+  <div class="menu-popup" id="menuPopup">
+
+    <button id="editOption">
+      <i class="fa-solid fa-pen"></i>
+      Edit
+    </button>
+
+    <button id="deleteOption" class="delete-menu">
+      <i class="fa-solid fa-trash"></i>
+      Delete
+    </button>
+
+  </div>
+
+
+  <!-- CONFIRM MODAL -->
+  <div class="modal-overlay" id="confirmModal">
+
+    <div class="confirm-box">
+
+      <div class="confirm-icon" id="confirmIcon">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+
+      <h2 id="confirmTitle">Are you sure?</h2>
+
+      <p id="confirmMessage">
+        Do you want to continue?
+      </p>
+
+      <div class="confirm-actions">
+
+        <button class="cancel-btn" id="confirmCancel">
+          Cancel
+        </button>
+
+        <button class="confirm-ok" id="confirmOk">
+          OK
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script type="module" src="process.js"></script>
+
+</body>
+</html>
